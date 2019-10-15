@@ -2,16 +2,10 @@
   "name": "cra",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start-app": "craco start",
+    "build-app": "craco build",
+    "start-api": "nodemon src/api/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +21,30 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "lodash": "4.17.15",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-router": "5.1.2",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.6.4",
+    "@sharegate/eslint-config-react": "1.1.0",
+    "@sharegate/eslint-config-recommended": "1.1.0",
+    "@sharegate/eslint-config-sort-imports": "1.0.2",
+    "babel-eslint": "10.0.3",
+    "babel-plugin-jsx-control-statements": "4.0.0",
+    "babel-plugin-react-require": "3.1.1",
+    "cookie-session": "1.3.3",
+    "cors": "2.8.5",
+    "craco": "0.0.3",
+    "eslint": "6.5.1",
+    "eslint-plugin-jsx-control-statements": "2.2.1",
+    "express": "4.17.1",
+    "faker": "4.1.0",
+    "nodemon": "1.19.3"
   }
 }
