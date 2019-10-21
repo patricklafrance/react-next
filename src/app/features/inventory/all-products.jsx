@@ -2,11 +2,11 @@ import { useApiGet, useApiPost } from "@core/http";
 import { useEffect } from "react";
 
 function Product({ id, name, price, quantity }) {
-    const [{ apiLoading }, executeRequest] = useApiPost();
+    const [{ apiLoading }, apiPost] = useApiPost();
 
     const handleDelete = () => {
         // TODO: How do i know it's over and I can refresh my data?
-        executeRequest({
+        apiPost({
             url: "/inventory/products/remove",
             data: {
                 id
@@ -24,10 +24,10 @@ function Product({ id, name, price, quantity }) {
 }
 
 export function AllInventoryProductsPage() {
-    const [{ apiData, apiLoading }, executeRequest] = useApiGet();
+    const [{ apiData, apiLoading }, apiGet] = useApiGet();
 
     useEffect(() => {
-        executeRequest({ url: "/inventory/products" });
+        apiGet({ url: "/inventory/products" });
     }, []);
 
     return (
