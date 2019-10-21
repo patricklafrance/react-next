@@ -1,17 +1,34 @@
-import { useApiGet } from "@core/http";
+import { useApiGet, useApiPost } from "@core/http";
+import { useEffect } from "react";
 
 function Product({ id, name, price, quantity }) {
+    const [{ apiLoading }, executeRequest] = useApiPost();
+
+    const handleDelete = () => {
+        // TODO: How do i know it's over and I can refresh my data?
+        executeRequest({
+            url: "/inventory/products/remove",
+            data: {
+                id
+            }
+        });
+    };
+
     return (
-        <li key={id}>
+        <li>
             <span>{name}</span> - <span>{price}$</span> -{" "}
             <span>{quantity} in stock</span>
+            <button type="button" onClick={handleDelete}>delete</button>
         </li>
     );
 }
 
-// TODO: is loading.
 export function AllInventoryProductsPage() {
-    const { data, loading } = useApiGet({ url: "/inventory/products" });
+    const [{ apiData, apiLoading }, executeRequest] = useApiGet();
+
+    useEffect(() => {
+        executeRequest({ url: "/inventory/products" });
+    }, []);
 
     return (
         <div>
@@ -19,11 +36,11 @@ export function AllInventoryProductsPage() {
 
             <div>
                 <Choose>
-                    <When condition={loading}>Loading...</When>
+                    <When condition={apiLoading}>Loading...</When>
                     <Otherwise>
                         <ul>
-                            {data.map(x => {
-                                return <Product {...x} />;
+                            {apiData.map(x => {
+                                return <Product key={x.id} {...x} />;
                             })}
                         </ul>
                     </Otherwise>

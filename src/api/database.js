@@ -33,7 +33,7 @@ users.push(createUser("Bine", "Binette", "bine", ROLES.user, "test123!"));
 for (let i = 0; i < 20; i += 1) {
     products.push(
         createProduct(
-            1,
+            i,
             faker.commerce.productName(),
             faker.commerce.price(5, 100),
             faker.random.number(40)

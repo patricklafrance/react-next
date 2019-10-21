@@ -1,0 +1,9 @@
+/.vscode
+/packages/semantic-ui-theme/semantic
+node_modules
+.eslintrc.js
+.editorconfig
+*.md
+*.mdx
+*.js
+*.jsx

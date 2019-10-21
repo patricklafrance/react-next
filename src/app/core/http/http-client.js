@@ -28,3 +28,12 @@ export function httpGet({ url, data, options = {} }) {
         ...options
     });
 }
+
+export function httpPost({ url, data, options = {} }) {
+    return fetch(url, {
+        method: "POST",
+        body: data && JSON.stringify(data),
+        ...DEFAULT_OPTIONS,
+        ...options
+    });
+}
